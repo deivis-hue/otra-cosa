@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternidad - El Jardín de Mamá</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sky-top: #a8dadc;
+            --sky-bottom: #f1faee;
+            --grass-deep: #2d5a27;
+            --grass-light: #55a630;
+            --accent-gold: #d4af37;
+            --text-color: #1b4332;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--sky-bottom);
+            color: var(--text-color);
+            font-family: 'Lora', serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ESCENARIO INFINITO */
+        .world {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+            z-index: -1;
+            perspective: 1000px;
+        }
+
+        /* EL PISO (PASTIZAJE AL INFINITO) */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 60%;
+            background: radial-gradient(circle at 50% 0%, var(--grass-light) 0%, var(--grass-deep) 70%);
+            transform: rotateX(70deg);
+            transform-origin: top;
+            box-shadow: inset 0 50px 100px rgba(0,0,0,0.2);
+        }
+
+        /* LA MESETA CENTRAL */
+        .meseta {
+            position: absolute;
+            bottom: 35%;
+            width: 350px;
+            height: 120px;
+            background: linear-gradient(to bottom, #7fb069, #2d5a27);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* DETALLES: FLORES Y PLANTAS */
+        .meseta::before {
+            content: '✿';
+            position: absolute;
+            top: -10px;
+            font-size: 20px;
+            color: white;
+            text-shadow: 15px 5px 0 #ffb7c5, -20px 8px 0 #ffd166, 40px 2px 0 #fff;
+        }
+
+        /* BICHITOS (Animación) */
+        .bug {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+            animation: fly 10s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            20% { opacity: 0.8; }
+            50% { transform: translate(100px, -50px) scale(1.2); }
+            80% { opacity: 0.8; }
+            100% { transform: translate(-50px, -150px) scale(0.5); opacity: 0; }
+        }
+
+        /* CONTENIDO */
+        .content-scroll {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding-top: 20vh;
+        }
+
+        header, .final-message {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--grass-deep);
+            letter-spacing: 5px;
+        }
+
+        .memory-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .memory-card {
+            margin-bottom: 40vh;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-gold);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .memory-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .memory-card h3 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 15px;
+            color: var(--grass-deep);
+        }
+
+        .memory-card.right { margin-left: 20%; }
+        .memory-card.left { margin-right: 20%; }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--grass-deep);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="world">
+        <div class="ground"></div>
+        <div class="meseta">
+            <div class="bug" style="top:0; left: 20%; animation-delay: 0s;"></div>
+            <div class="bug" style="top:20%; left: 80%; animation-delay: 2s;"></div>
+            <div class="bug" style="top:-20%; left: 50%; animation-delay: 5s;"></div>
+        </div>
+    </div>
+
+    <main class="content-scroll">
+        <header>
+            <h1 class="fade-in">Para Mamá</h1>
+            <p style="font-style: italic; opacity: 0.8;">Un jardín que nunca marchita</p>
+        </header>
+
+        <section class="memory-section">
+            <div class="memory-card left fade-in">
+                <h3>El Pasto Bajo los Pies</h3>
+                <p>Como esta pequeña meseta, mamá siempre fue nuestro suelo firme, el lugar donde podíamos correr sin miedo a caer.</p>
+            </div>
+
+            <div class="memory-card right fade-in">
+                <h3>Su Aroma a Flores</h3>
+                <p>No era solo un perfume, era la frescura de su risa y la calidez de sus abrazos lo que llenaba nuestro hogar de vida.</p>
+            </div>
+
+            <div class="memory-card center fade-in" style="text-align: center; border-left: none; border-bottom: 2px solid var(--accent-gold);">
+                <p style="font-size: 1.5rem; font-style: italic;">"Dondequiera que una alma hermosa haya estado, hay un rastro de flores hermosas."</p>
+            </div>
+
+            <div class="memory-card left fade-in">
+                <h3>El Horizonte Infinito</h3>
+                <p>Ella nos enseñó a mirar más allá de lo que ven los ojos, a entender que el amor no se acaba, solo se transforma en paisaje.</p>
+            </div>
+        </section>
+
+        <footer class="final-message fade-in">
+            <div style="width: 50px; height: 1px; background: var(--accent-gold); margin-bottom: 20px;"></div>
+            <p>Finito en el tiempo, infinito en mi alma.</p>
+            <p style="margin-top: 10px; font-weight: bold;">Siempre conmigo.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Detector de scroll para mostrar elementos
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .memory-card').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
