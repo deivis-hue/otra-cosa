@@ -1,0 +1,176 @@
+/* Configuración General */
+:root {
+    --bg-color: #0a0d12;
+    --accent-gold: #d4af37;
+    --text-light: #f4f4f4;
+    --mountain-color: #1a1f26;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    font-family: 'Lora', serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Espacio Infinito y Estrellas */
+.infinite-space {
+    position: relative;
+    min-height: 300vh; /* Altura grande para scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+    z-index: -1;
+}
+
+.stars::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 10vw 20vh 1px #fff, 50vw 40vh 2px #fff, 80vw 10vh 1px #fff, 
+                20vw 70vh 1px #fff, 60vw 85vh 2px #fff, 90vw 60vh 1px #fff;
+    opacity: 0.3;
+    animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* La Montaña Central */
+.mountain-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.mountain-silhouette {
+    width: 300px;
+    height: 200px;
+    background-color: var(--mountain-color);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    filter: blur(2px);
+    position: relative;
+}
+
+.mountain-glow {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* Tipografía y Contenido */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 4rem;
+    letter-spacing: 10px;
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+}
+
+.subtitle {
+    font-style: italic;
+    opacity: 0.7;
+    letter-spacing: 3px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Secciones de Memoria */
+.memory-zone {
+    width: 100%;
+    max-width: 900px;
+    padding: 100px 20px;
+    z-index: 1;
+}
+
+.memory-item {
+    margin-bottom: 30vh;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.5s ease-out;
+}
+
+.memory-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.memory-item h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+.memory-item.left { text-align: left; padding-right: 40%; }
+.memory-item.right { text-align: right; padding-left: 40%; }
+.memory-item.center { text-align: center; font-size: 1.5rem; font-style: italic; }
+
+blockquote {
+    border-left: none;
+    padding: 20px;
+    line-height: 1.8;
+}
+
+/* Footer Final */
+.final-message {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.line {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--accent-gold), transparent);
+    margin: 20px 0;
+}
+
+/* Animaciones de entrada */
+.fade-in {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
