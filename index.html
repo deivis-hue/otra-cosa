@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternidad - Recuerdos de Mamá</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <main class="infinite-space">
+        
+        <div class="mountain-container">
+            <div class="mountain-silhouette"></div>
+            <div class="mountain-glow"></div>
+        </div>
+
+        <header class="hero">
+            <h1 class="fade-in">Para Mamá</h1>
+            <p class="subtitle fade-in">Un legado que no tiene fin</p>
+        </header>
+
+        <section class="memory-zone">
+            <div class="memory-item left fade-in">
+                <h3>Su Aroma</h3>
+                <p>Aquel perfume que llenaba la casa antes de salir, una mezcla de flores y seguridad.</p>
+            </div>
+
+            <div class="memory-item right fade-in">
+                <h3>Su Fuerza</h3>
+                <p>Como esta montaña, firme ante cualquier tormenta, dándonos sombra y refugio.</p>
+            </div>
+
+            <div class="memory-item center fade-in">
+                <blockquote>"El amor de una madre es el velo de luz suave entre el corazón y el cielo."</blockquote>
+            </div>
+
+            <div class="memory-item left fade-in">
+                <h3>Sus Palabras</h3>
+                <p>Consejos que hoy resuenan como ecos eternos en los valles de mi mente.</p>
+            </div>
+
+            <div class="memory-item right fade-in">
+                <h3>Su Risa</h3>
+                <p>El sonido más puro, capaz de detener el tiempo y convertir el invierno en primavera.</p>
+            </div>
+        </section>
+
+        <footer class="final-message fade-in">
+            <p>Finito en el tiempo, infinito en el alma.</p>
+            <div class="line"></div>
+            <span>Siempre conmigo</span>
+        </footer>
+
+    </main>
+
+    <script>
+        // Efecto de aparición al hacer scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
